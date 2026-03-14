@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | GoalForge Heroes</title>
+<style>
+body {
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:#111827;
+    color:white;
+    padding:20px;
+}
+.container {
+    max-width:800px;
+    margin:auto;
+}
+h1 {
+    text-align:center;
+    color:#00ffe0;
+}
+.card {
+    background:rgba(255,255,255,0.05);
+    padding:25px;
+    border-radius:15px;
+}
+button {
+    margin-top:20px;
+    padding:12px 20px;
+    border:none;
+    border-radius:30px;
+    background:#6a5cff;
+    color:white;
+    cursor:pointer;
+}
+button:hover {
+    opacity:0.8;
+}
+a{color:#00ffe0;}
+</style>
+
+<script>
+function closeWebView() {
+    if (window.Android && Android.closeWebView) {
+        Android.closeWebView();
+    } else if (window.webkit && window.webkit.messageHandlers.closeWebView) {
+        window.webkit.messageHandlers.closeWebView.postMessage(null);
+    } else {
+        alert("Close action is available only inside the app.");
+    }
+}
+</script>
+
+</head>
+<body>
+<div class="container">
+<h1>Privacy Policy</h1>
+
+<div class="card">
+<p><strong>Developer:</strong> Kinetika 846</p>
+<p><strong>App:</strong> GoalForge Heroes</p>
+
+<h3>Data Collection</h3>
+<p>We do NOT collect any personal data.</p>
+<p>We do NOT store any user information.</p>
+<p>We do NOT share any data with third parties.</p>
+
+<h3>Permissions</h3>
+<p>The application does not request or process sensitive permissions.</p>
+
+<h3>Children’s Privacy</h3>
+<p>The app does not knowingly collect data from anyone, including children.</p>
+
+<p>This policy is effective as of 2025.</p>
+
+<button onclick="closeWebView()">Close Policy</button>
+</div>
+
+<p style="text-align:center;margin-top:20px;">
+<a href="index.html">Back to Home</a>
+</p>
+
+</div>
+</body>
+</html>
