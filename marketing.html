@@ -1,55 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marketing | GoalForge Heroes</title>
-<style>
-body{
-    margin:0;
-    font-family:'Segoe UI', sans-serif;
-    background:#1a1a2e;
-    color:white;
-    padding:30px;
-    text-align:center;
-}
-.card{
-    background:rgba(255,255,255,0.06);
-    padding:30px;
-    border-radius:20px;
-    max-width:800px;
-    margin:auto;
-}
-.highlight{
-    color:#00ffe0;
-}
-a{
-    color:#6a5cff;
-    text-decoration:none;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d1121" />
+  <meta name="description" content="Marketing page for GoalForge Heroes by Kinetika 846." />
+  <title>Marketing — GoalForge Heroes</title>
+  <style>
+    :root{--bg:#0a0f1e;--bg2:#161d35;--text:#f7f9ff;--muted:#c1cae6;--line:rgba(255,255,255,.14);--card:rgba(255,255,255,.08);--accent:#7cf0da;--accent2:#a18bff;--accent3:#ffd778;--radius:24px;--shadow:0 24px 80px rgba(0,0,0,.35)}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);background:radial-gradient(circle at 12% 16%, rgba(124,240,218,.12), transparent 20%), radial-gradient(circle at 90% 5%, rgba(161,139,255,.16), transparent 28%), radial-gradient(circle at 50% 100%, rgba(255,215,120,.09), transparent 20%), linear-gradient(160deg,var(--bg),var(--bg2));min-height:100vh}
+    .wrap{max-width:1120px;margin:auto;padding:16px 14px 42px}.nav,.card{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
+    .nav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;border-radius:20px;padding:10px 12px;position:sticky;top:8px;backdrop-filter:blur(18px)}
+    .nav a,.btn{color:var(--text);text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.05);display:inline-flex;align-items:center;gap:8px;transition:.25s}
+    .nav a:hover,.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.09)}
+    .hero{margin-top:18px}.hero .card{padding:24px;position:relative;overflow:hidden}.flare{position:absolute;border-radius:50%;filter:blur(12px);opacity:.5}.f1{width:170px;height:170px;right:-30px;top:-20px;background:rgba(124,240,218,.22)}.f2{width:140px;height:140px;left:-20px;bottom:-24px;background:rgba(161,139,255,.22)}
+    h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.02;margin:8px 0 12px}h2{margin:0 0 10px;font-size:1.18rem}p,li{color:var(--muted);line-height:1.78}
+    .lead{max-width:66ch}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.primary{background:linear-gradient(135deg, rgba(124,240,218,.22), rgba(161,139,255,.24))}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}.card{border-radius:var(--radius);padding:22px}.tag{display:inline-flex;padding:8px 12px;border-radius:999px;border:1px solid rgba(124,240,218,.25);background:rgba(124,240,218,.1);color:var(--accent);font-size:.88rem}
+    @media(max-width:860px){.grid{grid-template-columns:1fr}} 
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <div class="nav">
+      <strong>GoalForge Heroes Marketing</strong>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="index.html">Home</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+      </div>
+    </div>
 
-<h1>About GoalForge Heroes</h1>
+    <section class="hero">
+      <article class="card">
+        <div class="flare f1"></div><div class="flare f2"></div>
+        <span class="tag">Project overview</span>
+        <h1>A growing project built with effort, honesty, and long-term intent.</h1>
+        <p class="lead">
+          <strong>GoalForge Heroes</strong> is created by <strong>Kinetika 846</strong>, a beginner developer who is working hard to improve the application and deliver meaningful value to users.
+          The current focus is on development, quality, and learning through real product work.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="support.html">Contact developer</a>
+          <a class="btn" href="privacy-policy.html">View privacy position</a>
+        </div>
+      </article>
+    </section>
 
-<div class="card">
-<p>I am a beginner independent developer working hard to create valuable digital products.</p>
+    <section class="grid">
+      <article class="card">
+        <h2>Current monetization status</h2>
+        <p>
+          At this time, the app does <strong>not</strong> include paid features or subscriptions.
+          The developer is currently focused on building the product and improving its usefulness.
+        </p>
+      </article>
+      <article class="card">
+        <h2>Future plans</h2>
+        <p>
+          In the future, paid functions or subscription options may be introduced as a way to generate income and support continued development,
+          maintenance, and product growth.
+        </p>
+      </article>
+      <article class="card">
+        <h2>Value for users</h2>
+        <p>
+          The intention is not only to publish an app, but also to create something that offers value, improves over time, and becomes more useful with future updates.
+        </p>
+      </article>
+    </section>
 
-<p><span class="highlight">GoalForge Heroes</span> is built with passion and dedication.</p>
-
-<p>Currently, the app does not include paid features or subscriptions.</p>
-
-<p>In the future, monetization options may be introduced to support further development and provide continuous updates.</p>
-
-<p>My goal is to bring real value, motivation and productivity tools to users.</p>
-
-<p>Transparency and user trust are my priority.</p>
-</div>
-
-<p style="margin-top:20px;">
-<a href="index.html">Back to Home</a>
-</p>
-
+    <section class="card" style="margin-top:18px">
+      <h2>Developer message</h2>
+      <p>
+        This project reflects a sincere effort from a beginning developer. The product is still growing, and the developer aims to be transparent about its stage,
+        present limitations, and future direction. This page is meant to communicate that openly to both users and platform reviewers.
+      </p>
+    </section>
+  </div>
 </body>
 </html>
