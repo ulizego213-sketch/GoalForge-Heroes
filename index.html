@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0d1020" />
-  <meta name="description" content="Official developer and app information for GoalForge Heroes by Kinetika 846." />
-  <title>GoalForge Heroes — Developer Overview</title>
+  <meta name="theme-color" content="#0d1224" />
+  <meta name="description" content="Developer Overview for GoalForge Heroes by Kinetika 846." />
+  <title>Developer Overview — GoalForge Heroes</title>
   <style>
     :root{
-      --bg:#0a0d18;
-      --bg2:#12172b;
+      --bg:#0a0f1f;
+      --bg2:#151d36;
       --card:rgba(255,255,255,.08);
-      --line:rgba(255,255,255,.14);
-      --text:#f4f7ff;
-      --muted:#b8c1da;
-      --accent:#78f0d8;
-      --accent2:#8d8cff;
-      --accent3:#ffd36a;
-      --shadow:0 24px 80px rgba(0,0,0,.35);
-      --radius:24px;
+      --card2:rgba(255,255,255,.05);
+      --line:rgba(255,255,255,.13);
+      --text:#f6f8ff;
+      --muted:#bfc8e5;
+      --accent:#7df0d9;
+      --accent2:#8d94ff;
+      --accent3:#ffd676;
+      --radius:26px;
+      --shadow:0 28px 90px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -27,154 +28,135 @@
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at 15% 15%, rgba(120,240,216,.14), transparent 22%),
-        radial-gradient(circle at 85% 10%, rgba(141,140,255,.18), transparent 28%),
-        radial-gradient(circle at 50% 85%, rgba(255,211,106,.12), transparent 24%),
-        linear-gradient(160deg, var(--bg), var(--bg2));
+        radial-gradient(circle at 12% 12%, rgba(125,240,217,.13), transparent 20%),
+        radial-gradient(circle at 88% 8%, rgba(141,148,255,.17), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(255,214,118,.10), transparent 22%),
+        linear-gradient(160deg,var(--bg),var(--bg2));
       min-height:100vh;
       overflow-x:hidden;
     }
-    .gridfx,.gridfx:before{
-      position:fixed; inset:0; pointer-events:none;
-    }
-    .gridfx{
+    .bg-grid,.bg-grid:before{position:fixed; inset:0; pointer-events:none}
+    .bg-grid{
       background-image:linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size:28px 28px;
-      mask-image:radial-gradient(circle at center, black 40%, transparent 90%);
-      opacity:.35;
+      background-size:30px 30px;
+      mask-image:radial-gradient(circle at center, black 44%, transparent 88%);
+      opacity:.32;
     }
-    .gridfx:before{content:""; background:radial-gradient(circle at center, rgba(255,255,255,.07), transparent 60%); animation:pulse 9s ease-in-out infinite;}
-    @keyframes pulse{50%{transform:scale(1.12); opacity:.7}}
-    .wrap{max-width:1120px; margin:0 auto; padding:20px 16px 56px; position:relative; z-index:1;}
-    .nav{
-      position:sticky; top:10px; z-index:10; backdrop-filter:blur(18px);
-      background:rgba(10,13,24,.58); border:1px solid var(--line); border-radius:20px;
-      padding:10px; display:flex; gap:8px; flex-wrap:wrap; justify-content:space-between; align-items:center;
-      box-shadow:var(--shadow);
+    .bg-grid:before{content:""; background:radial-gradient(circle at center, rgba(255,255,255,.06), transparent 65%); animation:glow 10s ease-in-out infinite}
+    @keyframes glow{50%{transform:scale(1.1); opacity:.7}}
+    .wrap{max-width:1120px; margin:0 auto; padding:18px 14px 42px; position:relative; z-index:1}
+    .topbar{
+      position:sticky; top:8px; z-index:20; backdrop-filter:blur(18px);
+      background:rgba(9,13,26,.6); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); padding:12px;
     }
-    .brand{display:flex; gap:12px; align-items:center; font-weight:800; letter-spacing:.04em}
-    .logo{width:42px; height:42px; border-radius:14px; background:conic-gradient(from 210deg,var(--accent),var(--accent2),var(--accent3),var(--accent)); box-shadow:0 0 24px rgba(120,240,216,.35); position:relative}
-    .logo:after{content:""; position:absolute; inset:8px; border-radius:10px; background:rgba(10,13,24,.85)}
-    .navlinks{display:flex; gap:8px; flex-wrap:wrap}
-    .nav a,.button{
-      color:var(--text); text-decoration:none; border:1px solid var(--line); background:rgba(255,255,255,.05);
-      padding:10px 14px; border-radius:14px; transition:.25s transform,.25s background,.25s border-color; display:inline-flex; align-items:center; gap:8px;
+    .brandline{display:flex; align-items:center; gap:12px; margin-bottom:12px}
+    .logo{width:44px; height:44px; border-radius:15px; background:conic-gradient(from 210deg,var(--accent),var(--accent2),var(--accent3),var(--accent)); box-shadow:0 0 26px rgba(125,240,217,.28); position:relative; flex:0 0 auto}
+    .logo:after{content:""; position:absolute; inset:8px; border-radius:11px; background:rgba(10,15,31,.88)}
+    .titles{min-width:0}
+    .brandtitle{font-size:1.22rem; font-weight:800; letter-spacing:.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .brandsub{color:var(--muted); font-size:.92rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .navgrid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px}
+    .navgrid a{
+      min-height:52px; text-decoration:none; color:var(--text); display:flex; align-items:center; justify-content:center; text-align:center;
+      padding:12px 10px; border-radius:18px; border:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      transition:transform .2s ease, border-color .2s ease, background .2s ease; font-weight:600;
     }
-    .nav a:hover,.button:hover{transform:translateY(-2px); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.3)}
-    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:18px; padding:22px 0 14px}
-    .panel{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
-    .heroMain{padding:26px; position:relative; isolation:isolate}
-    .heroMain:before{content:""; position:absolute; inset:auto -10% -30% auto; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle, rgba(120,240,216,.2), transparent 65%); filter:blur(8px); z-index:-1}
-    .eyebrow{display:inline-flex; gap:8px; align-items:center; font-size:.86rem; color:var(--accent); background:rgba(120,240,216,.1); border:1px solid rgba(120,240,216,.25); padding:8px 12px; border-radius:999px}
-    h1{font-size:clamp(2rem,6vw,4rem); line-height:1; margin:14px 0 10px}
-    .lead{font-size:1.05rem; line-height:1.7; color:var(--muted); max-width:58ch}
-    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
-    .primary{background:linear-gradient(135deg, rgba(120,240,216,.22), rgba(141,140,255,.26)); border-color:rgba(255,255,255,.22)}
-    .stats{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; padding:18px}
-    .stat{padding:18px; border-radius:20px; border:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04))}
-    .stat b{display:block; font-size:1.4rem; margin-bottom:6px}
-    .section{margin-top:18px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
-    .card{padding:22px}
-    .card h2{margin:0 0 12px; font-size:1.2rem}
-    .card p,.card li{color:var(--muted); line-height:1.7}
+    .navgrid a:hover,.navgrid a.active{transform:translateY(-1px); border-color:rgba(255,255,255,.26); background:linear-gradient(135deg, rgba(125,240,217,.16), rgba(141,148,255,.18))}
+    .hero,.grid2,.grid3{display:grid; gap:18px; margin-top:18px}
+    .hero{grid-template-columns:1.15fr .85fr}
+    .grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:24px; position:relative; overflow:hidden}
+    .soft{background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04))}
+    .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:.88rem; color:var(--accent); padding:8px 12px; border-radius:999px; background:rgba(125,240,217,.10); border:1px solid rgba(125,240,217,.24)}
+    h1{font-size:clamp(2.1rem,5.3vw,4rem); line-height:1.02; margin:14px 0 10px}
+    h2{font-size:1.18rem; margin:0 0 10px}
+    p,li{color:var(--muted); line-height:1.72}
+    .lead{font-size:1.04rem; max-width:64ch}
     .list{padding-left:18px; margin:0}
-    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
-    .chip{padding:9px 12px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid var(--line); color:#d9e2ff; font-size:.92rem}
-    .footer{margin-top:18px; padding:20px; text-align:center; color:var(--muted); border:1px solid var(--line); border-radius:20px; background:rgba(255,255,255,.04)}
-    .floatdot{position:absolute; width:10px; height:10px; border-radius:50%; background:var(--accent); filter:blur(.4px); opacity:.55; animation:orbit 12s linear infinite}
-    .floatdot:nth-child(2){left:85%; top:18%; animation-duration:15s; background:var(--accent2)}
-    .floatdot:nth-child(3){left:70%; top:72%; animation-duration:10s; background:var(--accent3)}
-    @keyframes orbit{50%{transform:translateY(-18px) translateX(12px) scale(1.2)}100%{transform:translateY(0) translateX(0) scale(1)}}
-    @media (max-width:860px){.hero,.section{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
-    @media (max-width:560px){.wrap{padding:14px 12px 34px}.nav{top:6px}.stats{grid-template-columns:1fr}.heroMain,.card{padding:18px}h1{font-size:2.1rem}.lead{font-size:.98rem}}
-  </style>
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:20px}
+    .btn{display:inline-flex; align-items:center; justify-content:center; text-align:center; min-height:50px; padding:12px 16px; border-radius:16px; border:1px solid var(--line); text-decoration:none; color:var(--text); background:rgba(255,255,255,.05)}
+    .btn.primary{background:linear-gradient(135deg, rgba(125,240,217,.20), rgba(141,148,255,.22))}
+    .stack{display:grid; gap:12px}
+    .tile{padding:16px; border:1px solid var(--line); border-radius:20px; background:var(--card2)}
+    .tile strong{display:block; margin-bottom:6px; color:#ffffff}
+    .footer{margin-top:18px; padding:18px; text-align:center; color:var(--muted); border:1px solid var(--line); border-radius:20px; background:rgba(255,255,255,.04)}
+    .orb{position:absolute; width:170px; height:170px; border-radius:50%; filter:blur(10px); opacity:.34}
+    .orb.a{right:-36px; top:-24px; background:rgba(125,240,217,.22)}
+    .orb.b{left:-24px; bottom:-32px; background:rgba(141,148,255,.18)}
+    .mutedbox{margin-top:18px; padding:16px 18px; border-radius:18px; border:1px dashed rgba(255,255,255,.22); background:rgba(255,255,255,.04); color:#dbe3ff}
+    @media (max-width:860px){.hero,.grid2,.grid3{grid-template-columns:1fr}}
+    @media (max-width:640px){
+      .wrap{padding:12px 10px 30px}
+      .topbar{padding:10px; border-radius:22px}
+      .brandline{margin-bottom:10px}
+      .brandtitle{font-size:1.12rem}
+      .brandsub{font-size:.84rem}
+      .navgrid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px}
+      .navgrid a{min-height:48px; padding:10px 8px; border-radius:16px; font-size:.96rem}
+      .card{padding:18px; border-radius:22px}
+      h1{font-size:2.15rem}
+      .lead{font-size:.99rem}
+    }
+</style>
 </head>
 <body>
-  <div class="gridfx"></div>
+  <div class="bg-grid"></div>
   <div class="wrap">
-    <div class="nav">
-      <div class="brand"><div class="logo"></div><span>GoalForge Heroes</span></div>
-      <div class="navlinks">
-        <a href="index.html">Home</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="support.html">Support</a>
-        <a href="marketing.html">Marketing</a>
+    <header class="topbar">
+      <div class="brandline">
+        <div class="logo"></div>
+        <div class="titles">
+          <div class="brandtitle">GoalForge Heroes</div>
+          <div class="brandsub">Official information page for GoalForge Heroes</div>
+        </div>
       </div>
+      <nav class="navgrid"><a href="index.html" class="active">Home</a><a href="privacy-policy.html" class="">Privacy Policy</a><a href="support.html" class="">Support</a><a href="marketing.html" class="">Marketing</a></nav>
+    </header>
+    
+<section class="hero">
+  <article class="card soft">
+    <div class="orb a"></div><div class="orb b"></div>
+    <div class="eyebrow">Official developer information page</div>
+    <h1>Transparent information for users and reviewers.</h1>
+    <p class="lead">
+      This website presents clear and open information about the application <strong>GoalForge Heroes</strong>, its developer, and the current product approach.
+      The goal is to make the developer account understandable, trustworthy, and easy to review.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="privacy-policy.html">Read Privacy Policy</a>
+      <a class="btn" href="support.html">Open Support Page</a>
+      <a class="btn" href="marketing.html">Open Marketing Page</a>
     </div>
-
-    <section class="hero">
-      <div class="panel heroMain">
-        <div class="floatdot"></div><div class="floatdot"></div><div class="floatdot"></div>
-        <div class="eyebrow">Official developer information page</div>
-        <h1>Transparent information for users and reviewers.</h1>
-        <p class="lead">
-          This website presents clear and open information about the application <strong>GoalForge Heroes</strong>, its developer, and the current product approach.
-          The goal is to make the developer account understandable, trustworthy, and easy to review.
-        </p>
-        <div class="cta">
-          <a class="button primary" href="privacy-policy.html">Read Privacy Policy</a>
-          <a class="button" href="support.html">Open Support Page</a>
-          <a class="button" href="marketing.html">Open Marketing Page</a>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="stats">
-          <div class="stat"><b>App</b><span>GoalForge Heroes</span></div>
-          <div class="stat"><b>Developer</b><span>Kinetika 846</span></div>
-          <div class="stat"><b>Contact</b><span>ulizego213@gmail.com</span></div>
-          <div class="stat"><b>Focus</b><span>Clarity, honesty, and user value</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <article class="panel card">
-        <h2>About the developer account</h2>
-        <p>
-          This developer account is used to publish and maintain mobile software with a transparent presentation for users, store reviewers, and partners.
-          The developer aims to communicate openly, provide understandable policies, and improve the product over time.
-        </p>
-        <div class="chips">
-          <span class="chip">Open communication</span>
-          <span class="chip">Beginner-friendly transparency</span>
-          <span class="chip">Reviewer-ready information</span>
-        </div>
-      </article>
-      <article class="panel card">
-        <h2>About the application</h2>
-        <p>
-          <strong>GoalForge Heroes</strong> is presented as a product being actively developed with attention to user experience, clarity, and future growth.
-          This website serves as a public information layer that helps explain the product and the developer’s intentions.
-        </p>
-        <ul class="list">
-          <li>Simple and visible communication</li>
-          <li>Pages connected for quick navigation</li>
-          <li>Mobile-optimized layout for easy reading</li>
-        </ul>
-      </article>
-      <article class="panel card">
-        <h2>Why this website exists</h2>
-        <p>
-          The purpose of this site is to show a clear and open picture of the developer account. It helps users understand who is behind the app,
-          how support can be reached, what the privacy position is, and how the product may evolve in the future.
-        </p>
-      </article>
-      <article class="panel card">
-        <h2>Quick links</h2>
-        <ul class="list">
-          <li><a style="color:var(--accent)" href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a style="color:var(--accent)" href="support.html">Support URL page</a></li>
-          <li><a style="color:var(--accent)" href="marketing.html">Marketing URL page</a></li>
-        </ul>
-        <p>
-          All pages use a unified design language and are intended to work well on phones, tablets, and desktop browsers.
-        </p>
-      </article>
-    </section>
-
-    <div class="footer">
-      Official contact: <strong>ulizego213@gmail.com</strong> · Developer name: <strong>Kinetika 846</strong>
+  </article>
+  <aside class="card">
+    <div class="stack">
+      <div class="tile"><strong>Application</strong>GoalForge Heroes</div>
+      <div class="tile"><strong>Developer name</strong>Kinetika 846</div>
+      <div class="tile"><strong>Account email</strong>ulizego213@gmail.com</div>
+      <div class="tile"><strong>Purpose of this site</strong>Clear public information for users and Google Play reviewers.</div>
     </div>
+  </aside>
+</section>
+<section class="grid2">
+  <article class="card">
+    <h2>What users can verify here</h2>
+    <ul class="list">
+      <li>Who develops the application.</li>
+      <li>How users can contact the developer.</li>
+      <li>What the current privacy position is.</li>
+      <li>How the project is presented publicly.</li>
+    </ul>
+  </article>
+  <article class="card">
+    <h2>Current project position</h2>
+    <p>
+      <strong>GoalForge Heroes</strong> is presented with a straightforward and transparent approach. The website is designed to make the application easier to review and easier to understand.
+    </p>
+  </article>
+</section>
+
+    <div class="footer">GoalForge Heroes · Official information pages · Developer: Kinetika 846</div>
   </div>
 </body>
 </html>
