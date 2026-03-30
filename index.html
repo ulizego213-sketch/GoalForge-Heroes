@@ -1,95 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GoalForge Heroes | Developer Page</title>
-<style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #1e1e2f, #292947);
-    color: white;
-    text-align: center;
-}
-header {
-    padding: 60px 20px;
-}
-h1 {
-    font-size: 2.5em;
-    background: linear-gradient(90deg, #00ffe0, #6a5cff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.card {
-    background: rgba(255,255,255,0.05);
-    margin: 20px;
-    padding: 30px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
-}
-.card:hover {
-    transform: translateY(-5px);
-    background: rgba(255,255,255,0.08);
-}
-button {
-    background: linear-gradient(90deg, #00ffe0, #6a5cff);
-    border: none;
-    padding: 12px 25px;
-    border-radius: 30px;
-    color: white;
-    font-size: 1em;
-    cursor: pointer;
-    transition: 0.3s;
-}
-button:hover {
-    opacity: 0.8;
-}
-nav a {
-    margin: 10px;
-    color: #00ffe0;
-    text-decoration: none;
-}
-footer {
-    margin-top: 40px;
-    padding: 20px;
-    font-size: 0.9em;
-    opacity: 0.7;
-}
-@media(max-width:600px){
-    h1{font-size:1.8em;}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d1020" />
+  <meta name="description" content="Official developer and app information for GoalForge Heroes by Kinetika 846." />
+  <title>GoalForge Heroes — Developer Overview</title>
+  <style>
+    :root{
+      --bg:#0a0d18;
+      --bg2:#12172b;
+      --card:rgba(255,255,255,.08);
+      --line:rgba(255,255,255,.14);
+      --text:#f4f7ff;
+      --muted:#b8c1da;
+      --accent:#78f0d8;
+      --accent2:#8d8cff;
+      --accent3:#ffd36a;
+      --shadow:0 24px 80px rgba(0,0,0,.35);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(120,240,216,.14), transparent 22%),
+        radial-gradient(circle at 85% 10%, rgba(141,140,255,.18), transparent 28%),
+        radial-gradient(circle at 50% 85%, rgba(255,211,106,.12), transparent 24%),
+        linear-gradient(160deg, var(--bg), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    .gridfx,.gridfx:before{
+      position:fixed; inset:0; pointer-events:none;
+    }
+    .gridfx{
+      background-image:linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:28px 28px;
+      mask-image:radial-gradient(circle at center, black 40%, transparent 90%);
+      opacity:.35;
+    }
+    .gridfx:before{content:""; background:radial-gradient(circle at center, rgba(255,255,255,.07), transparent 60%); animation:pulse 9s ease-in-out infinite;}
+    @keyframes pulse{50%{transform:scale(1.12); opacity:.7}}
+    .wrap{max-width:1120px; margin:0 auto; padding:20px 16px 56px; position:relative; z-index:1;}
+    .nav{
+      position:sticky; top:10px; z-index:10; backdrop-filter:blur(18px);
+      background:rgba(10,13,24,.58); border:1px solid var(--line); border-radius:20px;
+      padding:10px; display:flex; gap:8px; flex-wrap:wrap; justify-content:space-between; align-items:center;
+      box-shadow:var(--shadow);
+    }
+    .brand{display:flex; gap:12px; align-items:center; font-weight:800; letter-spacing:.04em}
+    .logo{width:42px; height:42px; border-radius:14px; background:conic-gradient(from 210deg,var(--accent),var(--accent2),var(--accent3),var(--accent)); box-shadow:0 0 24px rgba(120,240,216,.35); position:relative}
+    .logo:after{content:""; position:absolute; inset:8px; border-radius:10px; background:rgba(10,13,24,.85)}
+    .navlinks{display:flex; gap:8px; flex-wrap:wrap}
+    .nav a,.button{
+      color:var(--text); text-decoration:none; border:1px solid var(--line); background:rgba(255,255,255,.05);
+      padding:10px 14px; border-radius:14px; transition:.25s transform,.25s background,.25s border-color; display:inline-flex; align-items:center; gap:8px;
+    }
+    .nav a:hover,.button:hover{transform:translateY(-2px); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.3)}
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:18px; padding:22px 0 14px}
+    .panel{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+    .heroMain{padding:26px; position:relative; isolation:isolate}
+    .heroMain:before{content:""; position:absolute; inset:auto -10% -30% auto; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle, rgba(120,240,216,.2), transparent 65%); filter:blur(8px); z-index:-1}
+    .eyebrow{display:inline-flex; gap:8px; align-items:center; font-size:.86rem; color:var(--accent); background:rgba(120,240,216,.1); border:1px solid rgba(120,240,216,.25); padding:8px 12px; border-radius:999px}
+    h1{font-size:clamp(2rem,6vw,4rem); line-height:1; margin:14px 0 10px}
+    .lead{font-size:1.05rem; line-height:1.7; color:var(--muted); max-width:58ch}
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px}
+    .primary{background:linear-gradient(135deg, rgba(120,240,216,.22), rgba(141,140,255,.26)); border-color:rgba(255,255,255,.22)}
+    .stats{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; padding:18px}
+    .stat{padding:18px; border-radius:20px; border:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04))}
+    .stat b{display:block; font-size:1.4rem; margin-bottom:6px}
+    .section{margin-top:18px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+    .card{padding:22px}
+    .card h2{margin:0 0 12px; font-size:1.2rem}
+    .card p,.card li{color:var(--muted); line-height:1.7}
+    .list{padding-left:18px; margin:0}
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
+    .chip{padding:9px 12px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid var(--line); color:#d9e2ff; font-size:.92rem}
+    .footer{margin-top:18px; padding:20px; text-align:center; color:var(--muted); border:1px solid var(--line); border-radius:20px; background:rgba(255,255,255,.04)}
+    .floatdot{position:absolute; width:10px; height:10px; border-radius:50%; background:var(--accent); filter:blur(.4px); opacity:.55; animation:orbit 12s linear infinite}
+    .floatdot:nth-child(2){left:85%; top:18%; animation-duration:15s; background:var(--accent2)}
+    .floatdot:nth-child(3){left:70%; top:72%; animation-duration:10s; background:var(--accent3)}
+    @keyframes orbit{50%{transform:translateY(-18px) translateX(12px) scale(1.2)}100%{transform:translateY(0) translateX(0) scale(1)}}
+    @media (max-width:860px){.hero,.section{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.wrap{padding:14px 12px 34px}.nav{top:6px}.stats{grid-template-columns:1fr}.heroMain,.card{padding:18px}h1{font-size:2.1rem}.lead{font-size:.98rem}}
+  </style>
 </head>
 <body>
+  <div class="gridfx"></div>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand"><div class="logo"></div><span>GoalForge Heroes</span></div>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="support.html">Support</a>
+        <a href="marketing.html">Marketing</a>
+      </div>
+    </div>
 
-<header>
-<h1>GoalForge Heroes</h1>
-<p>Official Developer Page</p>
-</header>
+    <section class="hero">
+      <div class="panel heroMain">
+        <div class="floatdot"></div><div class="floatdot"></div><div class="floatdot"></div>
+        <div class="eyebrow">Official developer information page</div>
+        <h1>Transparent information for users and reviewers.</h1>
+        <p class="lead">
+          This website presents clear and open information about the application <strong>GoalForge Heroes</strong>, its developer, and the current product approach.
+          The goal is to make the developer account understandable, trustworthy, and easy to review.
+        </p>
+        <div class="cta">
+          <a class="button primary" href="privacy-policy.html">Read Privacy Policy</a>
+          <a class="button" href="support.html">Open Support Page</a>
+          <a class="button" href="marketing.html">Open Marketing Page</a>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="stats">
+          <div class="stat"><b>App</b><span>GoalForge Heroes</span></div>
+          <div class="stat"><b>Developer</b><span>Kinetika 846</span></div>
+          <div class="stat"><b>Contact</b><span>ulizego213@gmail.com</span></div>
+          <div class="stat"><b>Focus</b><span>Clarity, honesty, and user value</span></div>
+        </div>
+      </div>
+    </section>
 
-<div class="card">
-<h2>About the App</h2>
-<p>GoalForge Heroes is designed to help users build discipline, achieve goals and level up personal growth through engaging mechanics.</p>
-</div>
+    <section class="section">
+      <article class="panel card">
+        <h2>About the developer account</h2>
+        <p>
+          This developer account is used to publish and maintain mobile software with a transparent presentation for users, store reviewers, and partners.
+          The developer aims to communicate openly, provide understandable policies, and improve the product over time.
+        </p>
+        <div class="chips">
+          <span class="chip">Open communication</span>
+          <span class="chip">Beginner-friendly transparency</span>
+          <span class="chip">Reviewer-ready information</span>
+        </div>
+      </article>
+      <article class="panel card">
+        <h2>About the application</h2>
+        <p>
+          <strong>GoalForge Heroes</strong> is presented as a product being actively developed with attention to user experience, clarity, and future growth.
+          This website serves as a public information layer that helps explain the product and the developer’s intentions.
+        </p>
+        <ul class="list">
+          <li>Simple and visible communication</li>
+          <li>Pages connected for quick navigation</li>
+          <li>Mobile-optimized layout for easy reading</li>
+        </ul>
+      </article>
+      <article class="panel card">
+        <h2>Why this website exists</h2>
+        <p>
+          The purpose of this site is to show a clear and open picture of the developer account. It helps users understand who is behind the app,
+          how support can be reached, what the privacy position is, and how the product may evolve in the future.
+        </p>
+      </article>
+      <article class="panel card">
+        <h2>Quick links</h2>
+        <ul class="list">
+          <li><a style="color:var(--accent)" href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a style="color:var(--accent)" href="support.html">Support URL page</a></li>
+          <li><a style="color:var(--accent)" href="marketing.html">Marketing URL page</a></li>
+        </ul>
+        <p>
+          All pages use a unified design language and are intended to work well on phones, tablets, and desktop browsers.
+        </p>
+      </article>
+    </section>
 
-<div class="card">
-<h2>Developer</h2>
-<p><strong>Kinetika 846</strong></p>
-<p>Contact: ulizego213@gmail.com</p>
-<p>I am an independent developer focused on delivering meaningful and transparent digital products.</p>
-</div>
-
-<nav>
-<a href="privacy-policy.html">Privacy Policy</a>
-<a href="support.html">Support</a>
-<a href="marketing.html">Marketing Info</a>
-</nav>
-
-<footer>
-© 2025 Kinetika 846. All rights reserved.
-</footer>
-
+    <div class="footer">
+      Official contact: <strong>ulizego213@gmail.com</strong> · Developer name: <strong>Kinetika 846</strong>
+    </div>
+  </div>
 </body>
 </html>
