@@ -1,45 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Support | GoalForge Heroes</title>
-<style>
-body{
-    margin:0;
-    font-family:'Segoe UI', sans-serif;
-    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    color:white;
-    text-align:center;
-    padding:30px;
-}
-.card{
-    background:rgba(255,255,255,0.08);
-    padding:30px;
-    border-radius:20px;
-    max-width:700px;
-    margin:auto;
-}
-a{
-    color:#00ffe0;
-    text-decoration:none;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101426" />
+  <meta name="description" content="Support page for GoalForge Heroes by Kinetika 846." />
+  <title>Support — GoalForge Heroes</title>
+  <style>
+    :root{--bg:#09101d;--bg2:#151d34;--text:#f7f9ff;--muted:#bec8e5;--line:rgba(255,255,255,.14);--card:rgba(255,255,255,.08);--accent:#86f1dc;--accent2:#6ea8ff;--radius:24px;--shadow:0 24px 80px rgba(0,0,0,.35)}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);background:radial-gradient(circle at 10% 15%, rgba(134,241,220,.12), transparent 22%), radial-gradient(circle at 90% 0%, rgba(110,168,255,.16), transparent 26%), linear-gradient(160deg,var(--bg),var(--bg2));min-height:100vh}
+    .wrap{max-width:1060px;margin:auto;padding:16px 14px 40px}.nav,.card{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
+    .nav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;border-radius:20px;padding:10px 12px;position:sticky;top:8px;backdrop-filter:blur(18px)}
+    .nav a,.btn{color:var(--text);text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.05);display:inline-flex;align-items:center;gap:8px;transition:.25s}
+    .nav a:hover,.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.09)}
+    .hero{margin-top:18px;display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.card{border-radius:var(--radius);padding:22px}
+    h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.02;margin:8px 0 12px} h2{margin:0 0 10px;font-size:1.18rem}
+    p,li{color:var(--muted);line-height:1.76}.highlight{color:var(--accent)} .list{padding-left:18px;margin:0}
+    .mailbox{display:grid;gap:12px}.box{padding:15px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+    .box strong{display:block;margin-bottom:6px}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.primary{background:linear-gradient(135deg, rgba(134,241,220,.22), rgba(110,168,255,.24))}
+    .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.mini .box{text-align:center}
+    @media(max-width:800px){.hero{grid-template-columns:1fr}.mini{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <div class="nav">
+      <strong>GoalForge Heroes Support</strong>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="index.html">Home</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="marketing.html">Marketing</a>
+      </div>
+    </div>
 
-<h1>Support</h1>
+    <section class="hero">
+      <article class="card">
+        <h1>Support and communication</h1>
+        <p>
+          This page provides a clear support contact point for users and store reviewers of <strong>GoalForge Heroes</strong>.
+          The developer aims to respond politely, improve the app over time, and maintain transparent communication.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="mailto:ulizego213@gmail.com?subject=GoalForge%20Heroes%20Support">Email support</a>
+          <a class="btn" href="marketing.html">Learn about the project</a>
+        </div>
+      </article>
+      <aside class="card mailbox">
+        <div class="box"><strong>Developer</strong>Kinetika 846</div>
+        <div class="box"><strong>Support email</strong><span class="highlight">ulizego213@gmail.com</span></div>
+        <div class="box"><strong>Application</strong>GoalForge Heroes</div>
+      </aside>
+    </section>
 
-<div class="card">
-<p>If you experience any issues or have suggestions, feel free to contact:</p>
-<h3>ulizego213@gmail.com</h3>
-<p>I aim to respond within 48 hours.</p>
-<p>Your feedback helps improve GoalForge Heroes.</p>
-</div>
-
-<p style="margin-top:20px;">
-<a href="index.html">Back to Home</a>
-</p>
-
+    <section class="card" style="margin-top:18px">
+      <h2>How support works</h2>
+      <ul class="list">
+        <li>Users can contact the developer by email for questions, feedback, or issue reports.</li>
+        <li>Requests may include bug details, usage questions, or general suggestions.</li>
+        <li>Constructive feedback is welcome and can help improve future versions of the app.</li>
+      </ul>
+      <div class="mini">
+        <div class="box"><strong>Questions</strong>General help and clarifications</div>
+        <div class="box"><strong>Feedback</strong>Suggestions for improvement</div>
+        <div class="box"><strong>Issues</strong>Bug and problem reports</div>
+      </div>
+    </section>
+  </div>
 </body>
 </html>
