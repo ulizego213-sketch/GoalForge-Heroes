@@ -3,68 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#101426" />
-  <meta name="description" content="Support page for GoalForge Heroes by Kinetika 846." />
+  <meta name="theme-color" content="#0d1224" />
+  <meta name="description" content="Support for GoalForge Heroes by Kinetika 846." />
   <title>Support — GoalForge Heroes</title>
   <style>
-    :root{--bg:#09101d;--bg2:#151d34;--text:#f7f9ff;--muted:#bec8e5;--line:rgba(255,255,255,.14);--card:rgba(255,255,255,.08);--accent:#86f1dc;--accent2:#6ea8ff;--radius:24px;--shadow:0 24px 80px rgba(0,0,0,.35)}
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);background:radial-gradient(circle at 10% 15%, rgba(134,241,220,.12), transparent 22%), radial-gradient(circle at 90% 0%, rgba(110,168,255,.16), transparent 26%), linear-gradient(160deg,var(--bg),var(--bg2));min-height:100vh}
-    .wrap{max-width:1060px;margin:auto;padding:16px 14px 40px}.nav,.card{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
-    .nav{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;border-radius:20px;padding:10px 12px;position:sticky;top:8px;backdrop-filter:blur(18px)}
-    .nav a,.btn{color:var(--text);text-decoration:none;padding:10px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.05);display:inline-flex;align-items:center;gap:8px;transition:.25s}
-    .nav a:hover,.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.09)}
-    .hero{margin-top:18px;display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.card{border-radius:var(--radius);padding:22px}
-    h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.02;margin:8px 0 12px} h2{margin:0 0 10px;font-size:1.18rem}
-    p,li{color:var(--muted);line-height:1.76}.highlight{color:var(--accent)} .list{padding-left:18px;margin:0}
-    .mailbox{display:grid;gap:12px}.box{padding:15px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
-    .box strong{display:block;margin-bottom:6px}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.primary{background:linear-gradient(135deg, rgba(134,241,220,.22), rgba(110,168,255,.24))}
-    .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.mini .box{text-align:center}
-    @media(max-width:800px){.hero{grid-template-columns:1fr}.mini{grid-template-columns:1fr}}
-  </style>
+    :root{
+      --bg:#0a0f1f;
+      --bg2:#151d36;
+      --card:rgba(255,255,255,.08);
+      --card2:rgba(255,255,255,.05);
+      --line:rgba(255,255,255,.13);
+      --text:#f6f8ff;
+      --muted:#bfc8e5;
+      --accent:#7df0d9;
+      --accent2:#8d94ff;
+      --accent3:#ffd676;
+      --radius:26px;
+      --shadow:0 28px 90px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(125,240,217,.13), transparent 20%),
+        radial-gradient(circle at 88% 8%, rgba(141,148,255,.17), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(255,214,118,.10), transparent 22%),
+        linear-gradient(160deg,var(--bg),var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    .bg-grid,.bg-grid:before{position:fixed; inset:0; pointer-events:none}
+    .bg-grid{
+      background-image:linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:30px 30px;
+      mask-image:radial-gradient(circle at center, black 44%, transparent 88%);
+      opacity:.32;
+    }
+    .bg-grid:before{content:""; background:radial-gradient(circle at center, rgba(255,255,255,.06), transparent 65%); animation:glow 10s ease-in-out infinite}
+    @keyframes glow{50%{transform:scale(1.1); opacity:.7}}
+    .wrap{max-width:1120px; margin:0 auto; padding:18px 14px 42px; position:relative; z-index:1}
+    .topbar{
+      position:sticky; top:8px; z-index:20; backdrop-filter:blur(18px);
+      background:rgba(9,13,26,.6); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); padding:12px;
+    }
+    .brandline{display:flex; align-items:center; gap:12px; margin-bottom:12px}
+    .logo{width:44px; height:44px; border-radius:15px; background:conic-gradient(from 210deg,var(--accent),var(--accent2),var(--accent3),var(--accent)); box-shadow:0 0 26px rgba(125,240,217,.28); position:relative; flex:0 0 auto}
+    .logo:after{content:""; position:absolute; inset:8px; border-radius:11px; background:rgba(10,15,31,.88)}
+    .titles{min-width:0}
+    .brandtitle{font-size:1.22rem; font-weight:800; letter-spacing:.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .brandsub{color:var(--muted); font-size:.92rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .navgrid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px}
+    .navgrid a{
+      min-height:52px; text-decoration:none; color:var(--text); display:flex; align-items:center; justify-content:center; text-align:center;
+      padding:12px 10px; border-radius:18px; border:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      transition:transform .2s ease, border-color .2s ease, background .2s ease; font-weight:600;
+    }
+    .navgrid a:hover,.navgrid a.active{transform:translateY(-1px); border-color:rgba(255,255,255,.26); background:linear-gradient(135deg, rgba(125,240,217,.16), rgba(141,148,255,.18))}
+    .hero,.grid2,.grid3{display:grid; gap:18px; margin-top:18px}
+    .hero{grid-template-columns:1.15fr .85fr}
+    .grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:24px; position:relative; overflow:hidden}
+    .soft{background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04))}
+    .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:.88rem; color:var(--accent); padding:8px 12px; border-radius:999px; background:rgba(125,240,217,.10); border:1px solid rgba(125,240,217,.24)}
+    h1{font-size:clamp(2.1rem,5.3vw,4rem); line-height:1.02; margin:14px 0 10px}
+    h2{font-size:1.18rem; margin:0 0 10px}
+    p,li{color:var(--muted); line-height:1.72}
+    .lead{font-size:1.04rem; max-width:64ch}
+    .list{padding-left:18px; margin:0}
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:20px}
+    .btn{display:inline-flex; align-items:center; justify-content:center; text-align:center; min-height:50px; padding:12px 16px; border-radius:16px; border:1px solid var(--line); text-decoration:none; color:var(--text); background:rgba(255,255,255,.05)}
+    .btn.primary{background:linear-gradient(135deg, rgba(125,240,217,.20), rgba(141,148,255,.22))}
+    .stack{display:grid; gap:12px}
+    .tile{padding:16px; border:1px solid var(--line); border-radius:20px; background:var(--card2)}
+    .tile strong{display:block; margin-bottom:6px; color:#ffffff}
+    .footer{margin-top:18px; padding:18px; text-align:center; color:var(--muted); border:1px solid var(--line); border-radius:20px; background:rgba(255,255,255,.04)}
+    .orb{position:absolute; width:170px; height:170px; border-radius:50%; filter:blur(10px); opacity:.34}
+    .orb.a{right:-36px; top:-24px; background:rgba(125,240,217,.22)}
+    .orb.b{left:-24px; bottom:-32px; background:rgba(141,148,255,.18)}
+    .mutedbox{margin-top:18px; padding:16px 18px; border-radius:18px; border:1px dashed rgba(255,255,255,.22); background:rgba(255,255,255,.04); color:#dbe3ff}
+    @media (max-width:860px){.hero,.grid2,.grid3{grid-template-columns:1fr}}
+    @media (max-width:640px){
+      .wrap{padding:12px 10px 30px}
+      .topbar{padding:10px; border-radius:22px}
+      .brandline{margin-bottom:10px}
+      .brandtitle{font-size:1.12rem}
+      .brandsub{font-size:.84rem}
+      .navgrid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px}
+      .navgrid a{min-height:48px; padding:10px 8px; border-radius:16px; font-size:.96rem}
+      .card{padding:18px; border-radius:22px}
+      h1{font-size:2.15rem}
+      .lead{font-size:.99rem}
+    }
+</style>
 </head>
 <body>
+  <div class="bg-grid"></div>
   <div class="wrap">
-    <div class="nav">
-      <strong>GoalForge Heroes Support</strong>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <a href="index.html">Home</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="marketing.html">Marketing</a>
-      </div>
-    </div>
-
-    <section class="hero">
-      <article class="card">
-        <h1>Support and communication</h1>
-        <p>
-          This page provides a clear support contact point for users and store reviewers of <strong>GoalForge Heroes</strong>.
-          The developer aims to respond politely, improve the app over time, and maintain transparent communication.
-        </p>
-        <div class="cta">
-          <a class="btn primary" href="mailto:ulizego213@gmail.com?subject=GoalForge%20Heroes%20Support">Email support</a>
-          <a class="btn" href="marketing.html">Learn about the project</a>
+    <header class="topbar">
+      <div class="brandline">
+        <div class="logo"></div>
+        <div class="titles">
+          <div class="brandtitle">GoalForge Heroes</div>
+          <div class="brandsub">Contact and support information for GoalForge Heroes</div>
         </div>
-      </article>
-      <aside class="card mailbox">
-        <div class="box"><strong>Developer</strong>Kinetika 846</div>
-        <div class="box"><strong>Support email</strong><span class="highlight">ulizego213@gmail.com</span></div>
-        <div class="box"><strong>Application</strong>GoalForge Heroes</div>
-      </aside>
-    </section>
-
-    <section class="card" style="margin-top:18px">
-      <h2>How support works</h2>
-      <ul class="list">
-        <li>Users can contact the developer by email for questions, feedback, or issue reports.</li>
-        <li>Requests may include bug details, usage questions, or general suggestions.</li>
-        <li>Constructive feedback is welcome and can help improve future versions of the app.</li>
-      </ul>
-      <div class="mini">
-        <div class="box"><strong>Questions</strong>General help and clarifications</div>
-        <div class="box"><strong>Feedback</strong>Suggestions for improvement</div>
-        <div class="box"><strong>Issues</strong>Bug and problem reports</div>
       </div>
-    </section>
+      <nav class="navgrid"><a href="index.html" class="">Home</a><a href="privacy-policy.html" class="">Privacy Policy</a><a href="support.html" class="active">Support</a><a href="marketing.html" class="">Marketing</a></nav>
+    </header>
+    
+<section class="hero">
+  <article class="card soft">
+    <div class="orb a"></div>
+    <div class="eyebrow">Support URL</div>
+    <h1>Support and communication</h1>
+    <p class="lead">
+      This page provides a clear support contact point for users and store reviewers of <strong>GoalForge Heroes</strong>.
+      The developer aims to respond politely, improve the app over time, and maintain transparent communication.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="marketing.html">Learn about the project</a>
+      <a class="btn" href="privacy-policy.html">Read privacy position</a>
+    </div>
+  </article>
+  <aside class="card">
+    <div class="stack">
+      <div class="tile"><strong>Developer</strong>Kinetika 846</div>
+      <div class="tile"><strong>Support email</strong>ulizego213@gmail.com</div>
+      <div class="tile"><strong>Application</strong>GoalForge Heroes</div>
+    </div>
+  </aside>
+</section>
+<section class="grid3">
+  <article class="card"><h2>Questions</h2><p>Users may send questions about the application, usage, or general clarification.</p></article>
+  <article class="card"><h2>Feedback</h2><p>Constructive suggestions are welcome and may help improve future versions of the app.</p></article>
+  <article class="card"><h2>Issue reports</h2><p>Users may report bugs or unexpected behavior through the support email listed on this page.</p></article>
+</section>
+
+    <div class="footer">GoalForge Heroes · Official information pages · Developer: Kinetika 846</div>
   </div>
 </body>
 </html>
