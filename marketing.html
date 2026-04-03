@@ -147,20 +147,29 @@
     }
 
     .cards{
-      display:flex;
-      flex-direction:column;
-      gap:20px;
+      display:grid;
+      grid-template-columns:1fr;
+      row-gap:20px;
       margin-top:20px;
       margin-bottom:22px;
+      align-items:start;
     }
     .card{
+      display:block;
+      position:relative;
       border:1px solid var(--line);
       border-radius:28px;
       background:linear-gradient(180deg, var(--card), var(--card-2));
       box-shadow:var(--glow);
       padding:26px;
       width:100%;
-      clear:both;
+      min-width:0;
+      margin:0;
+      transform:translateZ(0);
+      isolation:isolate;
+    }
+    .card + .card{
+      margin-top:0;
     }
     .card h3{
       margin:0 0 14px;
@@ -235,7 +244,7 @@
         line-height:1.72;
       }
       .cards{
-        gap:16px;
+        row-gap:16px;
         margin-top:16px;
       }
       .card{
