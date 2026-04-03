@@ -3,391 +3,159 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#081126" />
+  <meta name="theme-color" content="#0d1224" />
+  <meta name="description" content="Marketing page for GoalForge Heroes by Kinetika 846." />
   <title>Marketing — GoalForge Heroes</title>
   <style>
     :root{
-      --bg1:#060b1c;
-      --bg2:#0b1433;
-      --card:rgba(24,31,66,.78);
-      --card2:rgba(33,41,84,.70);
-      --line:rgba(255,255,255,.12);
-      --text:#eef2ff;
-      --muted:#c7cce6;
-      --accent:#8cf3dd;
-      --accent2:#8ea2ff;
-      --glow:0 18px 60px rgba(53,95,255,.22);
+      --bg:#0a0f1f;
+      --bg2:#151d36;
+      --card:rgba(255,255,255,.08);
+      --card2:rgba(255,255,255,.05);
+      --line:rgba(255,255,255,.13);
+      --text:#f6f8ff;
+      --muted:#bfc8e5;
+      --accent:#7df0d9;
+      --accent2:#8d94ff;
+      --accent3:#ffd676;
+      --radius:26px;
+      --shadow:0 28px 90px rgba(0,0,0,.35);
     }
-
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-
+    html{scroll-behavior:smooth}
     body{
-      min-height:100vh;
+      margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
       background:
-        radial-gradient(circle at 15% 15%, rgba(106,255,224,.16), transparent 20%),
-        radial-gradient(circle at 85% 20%, rgba(122,138,255,.20), transparent 24%),
-        radial-gradient(circle at 60% 80%, rgba(39,77,255,.18), transparent 24%),
-        linear-gradient(180deg, var(--bg1), var(--bg2) 65%, #07102a);
+        radial-gradient(circle at 12% 12%, rgba(125,240,217,.13), transparent 20%),
+        radial-gradient(circle at 88% 8%, rgba(141,148,255,.17), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(255,214,118,.10), transparent 22%),
+        linear-gradient(160deg,var(--bg),var(--bg2));
+      min-height:100vh;
       overflow-x:hidden;
     }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size:36px 36px;
-      mask-image:radial-gradient(circle at center, black 55%, transparent 100%);
-      opacity:.35;
-      pointer-events:none;
+    .bg-grid,.bg-grid:before{position:fixed; inset:0; pointer-events:none}
+    .bg-grid{
+      background-image:linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:30px 30px;
+      mask-image:radial-gradient(circle at center, black 44%, transparent 88%);
+      opacity:.32;
     }
-
-    .shell{
-      width:min(1120px, calc(100% - 28px));
-      margin:18px auto 28px;
-      position:relative;
-    }
-
+    .bg-grid:before{content:""; background:radial-gradient(circle at center, rgba(255,255,255,.06), transparent 65%); animation:glow 10s ease-in-out infinite}
+    @keyframes glow{50%{transform:scale(1.1); opacity:.7}}
+    .wrap{max-width:1120px; margin:0 auto; padding:18px 14px 42px; position:relative; z-index:1}
     .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      padding:18px;
-      border:1px solid var(--line);
-      border-radius:30px;
-      background:linear-gradient(180deg, rgba(15,22,50,.88), rgba(12,18,45,.72));
-      backdrop-filter:blur(14px);
-      box-shadow:var(--glow);
+      position:sticky; top:8px; z-index:20; backdrop-filter:blur(18px);
+      background:rgba(9,13,26,.6); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow); padding:12px;
     }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
+    .brandline{display:flex; align-items:center; gap:12px; margin-bottom:12px}
+    .logo{width:44px; height:44px; border-radius:15px; background:conic-gradient(from 210deg,var(--accent),var(--accent2),var(--accent3),var(--accent)); box-shadow:0 0 26px rgba(125,240,217,.28); position:relative; flex:0 0 auto}
+    .logo:after{content:""; position:absolute; inset:8px; border-radius:11px; background:rgba(10,15,31,.88)}
+    .titles{min-width:0}
+    .brandtitle{font-size:1.22rem; font-weight:800; letter-spacing:.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .brandsub{color:var(--muted); font-size:.92rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .navgrid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px}
+    .navgrid a{
+      min-height:52px; text-decoration:none; color:var(--text); display:flex; align-items:center; justify-content:center; text-align:center;
+      padding:12px 10px; border-radius:18px; border:1px solid var(--line); background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      transition:transform .2s ease, border-color .2s ease, background .2s ease; font-weight:600;
     }
-
-    .logo{
-      width:56px;
-      height:56px;
-      border-radius:18px;
-      background:linear-gradient(135deg, #9ff6da, #7c85ff 52%, #ffd67a);
-      position:relative;
-      box-shadow:0 0 0 1px rgba(255,255,255,.14) inset, 0 16px 34px rgba(108,120,255,.25);
-      flex:0 0 auto;
-    }
-
-    .logo::after{
-      content:"";
-      position:absolute;
-      inset:10px;
-      border-radius:14px;
-      background:#0a1028;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
-    }
-
-    .brand-copy h1{
-      margin:0 0 4px;
-      font-size:clamp(1.1rem, 2.4vw, 1.65rem);
-      letter-spacing:.02em;
-      line-height:1.08;
-    }
-
-    .brand-copy p{
-      margin:0;
-      color:var(--muted);
-      font-size:.95rem;
-      max-width:42vw;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .nav{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      gap:10px;
-    }
-
-    .nav a{
-      text-decoration:none;
-      color:var(--text);
-      padding:12px 16px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.1);
-      background:rgba(255,255,255,.04);
-      min-height:46px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      transition:.22s ease;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
-      white-space:nowrap;
-    }
-
-    .nav a.active{
-      transform:translateY(-1px);
-      border-color:rgba(140,243,221,.34);
-      background:linear-gradient(135deg, rgba(140,243,221,.14), rgba(142,162,255,.16));
-    }
-
-    .hero{
-      margin-top:18px;
-      padding:28px;
-      border-radius:34px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(33,41,84,.64), rgba(19,27,58,.76));
-      box-shadow:var(--glow);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      width:280px;
-      height:280px;
-      right:-70px;
-      top:-70px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(141,160,255,.28), transparent 70%);
-      filter:blur(10px);
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(140,243,221,.24);
-      color:var(--accent);
-      background:rgba(140,243,221,.08);
-      font-size:.95rem;
-    }
-
-    .hero h2{
-      margin:18px 0 14px;
-      font-size:clamp(2rem, 5vw, 4.2rem);
-      line-height:.96;
-      letter-spacing:-.04em;
-      max-width:840px;
-    }
-
-    .hero p{
-      margin:0;
-      max-width:760px;
-      color:var(--muted);
-      font-size:clamp(1rem, 1.6vw, 1.18rem);
-      line-height:1.7;
-    }
-
-    .cards{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:18px;
-      margin-top:18px;
-    }
-
-    .card{
-      width:100%;
-      min-width:0;
-      padding:24px;
-      border-radius:30px;
-      border:1px solid var(--line);
-      background:linear-gradient(180deg, var(--card), var(--card2));
-      box-shadow:var(--glow);
-    }
-
-    .card h3{
-      margin:0 0 12px;
-      font-size:clamp(1.35rem, 2.2vw, 2.15rem);
-      line-height:1.1;
-      letter-spacing:-.03em;
-    }
-
-    .card p{
-      margin:0;
-      color:var(--muted);
-      font-size:1.04rem;
-      line-height:1.75;
-      overflow-wrap:anywhere;
-    }
-
-    .footer{
-      text-align:center;
-      color:var(--muted);
-      padding:22px 10px 10px;
-      font-size:1rem;
-    }
-
-    @media (max-width: 860px){
-      .topbar{
-        display:block;
-        padding:16px;
-      }
-
-      .brand{
-        margin-bottom:14px;
-      }
-
-      .brand-copy p{
-        max-width:none;
-      }
-
-      .nav{
-        display:grid;
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-        gap:10px;
-      }
-
-      .nav a{
-        width:100%;
-        padding:12px 10px;
-        border-radius:16px;
-        text-align:center;
-      }
-
-      .hero{
-        padding:22px 18px;
-        border-radius:28px;
-      }
-
-      .card{
-        width:100%;
-      }
-    }
-
-    @media (max-width: 520px){
-      .shell{
-        width:min(100% - 16px, 100%);
-        margin:10px auto 22px;
-      }
-
-      .topbar{
-        border-radius:24px;
-      }
-
-      .logo{
-        width:48px;
-        height:48px;
-        border-radius:15px;
-      }
-
-      .brand-copy p{
-        font-size:.92rem;
-      }
-
-      .hero{
-        margin-top:16px;
-        padding:20px 16px;
-        border-radius:24px;
-      }
-
-      .hero h2{
-        font-size:2.35rem;
-      }
-
-      .hero p,
-      .card p{
-        font-size:1rem;
-        line-height:1.72;
-      }
-
-      .cards{
-        gap:16px;
-        margin-top:16px;
-      }
-
-      .card{
-        padding:20px 16px;
-        border-radius:24px;
-      }
-
-      .card h3{
-        font-size:1.2rem;
-        margin-bottom:12px;
-      }
+    .navgrid a:hover,.navgrid a.active{transform:translateY(-1px); border-color:rgba(255,255,255,.26); background:linear-gradient(135deg, rgba(125,240,217,.16), rgba(141,148,255,.18))}
+    .hero,.grid2,.grid3{display:grid; gap:18px; margin-top:18px}
+    .hero{grid-template-columns:1.15fr .85fr}
+    .grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:24px; position:relative; overflow:hidden}
+    .soft{background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04))}
+    .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:.88rem; color:var(--accent); padding:8px 12px; border-radius:999px; background:rgba(125,240,217,.10); border:1px solid rgba(125,240,217,.24)}
+    h1{font-size:clamp(2.1rem,5.3vw,4rem); line-height:1.02; margin:14px 0 10px}
+    h2{font-size:1.18rem; margin:0 0 10px}
+    p,li{color:var(--muted); line-height:1.72}
+    .lead{font-size:1.04rem; max-width:64ch}
+    .list{padding-left:18px; margin:0}
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:20px}
+    .btn{display:inline-flex; align-items:center; justify-content:center; text-align:center; min-height:50px; padding:12px 16px; border-radius:16px; border:1px solid var(--line); text-decoration:none; color:var(--text); background:rgba(255,255,255,.05)}
+    .btn.primary{background:linear-gradient(135deg, rgba(125,240,217,.20), rgba(141,148,255,.22))}
+    .stack{display:grid; gap:12px}
+    .tile{padding:16px; border:1px solid var(--line); border-radius:20px; background:var(--card2)}
+    .tile strong{display:block; margin-bottom:6px; color:#ffffff}
+    .footer{margin-top:18px; padding:18px; text-align:center; color:var(--muted); border:1px solid var(--line); border-radius:20px; background:rgba(255,255,255,.04)}
+    .orb{position:absolute; width:170px; height:170px; border-radius:50%; filter:blur(10px); opacity:.34}
+    .orb.a{right:-36px; top:-24px; background:rgba(125,240,217,.22)}
+    .orb.b{left:-24px; bottom:-32px; background:rgba(141,148,255,.18)}
+    .mutedbox{margin-top:18px; padding:16px 18px; border-radius:18px; border:1px dashed rgba(255,255,255,.22); background:rgba(255,255,255,.04); color:#dbe3ff}
+    @media (max-width:860px){.hero,.grid2,.grid3{grid-template-columns:1fr}}
+    @media (max-width:640px){
+      .wrap{padding:12px 10px 30px}
+      .topbar{padding:10px; border-radius:22px}
+      .brandline{margin-bottom:10px}
+      .brandtitle{font-size:1.12rem}
+      .brandsub{font-size:.84rem}
+      .navgrid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px}
+      .navgrid a{min-height:48px; padding:10px 8px; border-radius:16px; font-size:.96rem}
+      .card{padding:18px; border-radius:22px}
+      h1{font-size:2.15rem}
+      .lead{font-size:.99rem}
     }
   </style>
 </head>
 <body>
-  <main class="shell">
+  <div class="bg-grid"></div>
+  <div class="wrap">
     <header class="topbar">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div class="brand-copy">
-          <h1>GoalForge Heroes</h1>
-          <p>Project presentation and developer message</p>
+      <div class="brandline">
+        <div class="logo"></div>
+        <div class="titles">
+          <div class="brandtitle">GoalForge Heroes</div>
+          <div class="brandsub">Project presentation and developer message for GoalForge Heroes</div>
         </div>
       </div>
-
-      <nav class="nav" aria-label="Site navigation">
-        <a href="index.html">Home</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="support.html">Support</a>
-        <a class="active" href="marketing.html">Marketing</a>
-      </nav>
+      <nav class="navgrid"><a href="index.html" class="">Home</a><a href="privacy-policy.html" class="">Privacy Policy</a><a href="support.html" class="">Support</a><a href="marketing.html" class="active">Marketing</a></nav>
     </header>
 
-    <section class="hero">
-      <div class="eyebrow">Marketing URL</div>
-      <h2>An honest early-stage project with long-term plans.</h2>
-      <p>
-        GoalForge Heroes is being built with care and persistence. The intention is to improve the
-        app over time, communicate openly with users and reviewers, and gradually turn the project
-        into a stronger and more valuable product.
-      </p>
-    </section>
+<section class="hero">
+  <article class="card soft">
+    <div class="orb a"></div>
+    <div class="eyebrow">Marketing URL</div>
+    <h1>Early-stage development with honest long-term goals</h1>
+    <p class="lead">
+      <strong>GoalForge Heroes</strong> is being developed with care and persistence. The project is still at an early stage,
+      and the main focus is to build a useful app, improve it step by step, and communicate openly with both users and platform reviewers.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="support.html">Open support page</a>
+      <a class="btn" href="privacy-policy.html">Read privacy policy</a>
+    </div>
+    <div class="mutedbox">
+      The app currently does not include paid features or subscriptions. Monetization may be introduced later in a clear and fair way to support continued development.
+    </div>
+  </article>
+  <aside class="card">
+    <div class="stack">
+      <div class="tile"><strong>Developer</strong>Kinetika 846</div>
+      <div class="tile"><strong>Contact account</strong>ulizego213@gmail.com</div>
+      <div class="tile"><strong>Application</strong>GoalForge Heroes</div>
+    </div>
+  </aside>
+</section>
 
-    <section class="cards" aria-label="Marketing details">
-      <article class="card">
-        <h3>Value for users</h3>
-        <p>
-          The intention is to build something useful, improve it consistently, and make each update
-          more valuable for the user.
-        </p>
-      </article>
+<section class="grid3">
+  <article class="card">
+    <h2>Value for users</h2>
+    <p>The goal is to create something useful, keep improving it over time, and make each update more meaningful for the user experience.</p>
+  </article>
+  <article class="card">
+    <h2>Developer message</h2>
+    <p>This project reflects the effort of a beginning developer who is trying to build openly, learn continuously, and present the product honestly.</p>
+  </article>
+  <article class="card">
+    <h2>Future direction</h2>
+    <p>The long-term plan is to strengthen the app, improve quality and presentation, and add sustainable monetization only when the product is ready for it.</p>
+  </article>
+</section>
 
-      <article class="card">
-        <h3>Developer message</h3>
-        <p>
-          This project reflects a sincere effort from a beginning developer. The product is still
-          growing, and the developer aims to be transparent about its stage, present limitations,
-          and future direction. This page is intended to communicate that openly to both users and
-          platform reviewers.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Current monetization status</h3>
-        <p>
-          At the moment, the application does not include paid features or subscriptions. In the
-          future, monetization may be added to support further development and help the project
-          generate income in a clear and fair way.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Commitment to improvement</h3>
-        <p>
-          The goal is not only to publish an app, but to continue refining its quality, improve
-          usability, and provide a clearer public presence that demonstrates genuine effort and
-          responsibility.
-        </p>
-      </article>
-    </section>
-
-    <footer class="footer">
-      GoalForge Heroes · Official information pages
-    </footer>
-  </main>
+    <div class="footer">GoalForge Heroes · Official information pages · Developer: Kinetika 846</div>
+  </div>
 </body>
 </html>
